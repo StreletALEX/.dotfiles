@@ -169,5 +169,9 @@ foreignObject[mask="url(#svg-mask-avatar-status-mobile-32)"]::after {
 /* ca sa modifici boxu de sus la windows tab */
  .leading_c38106::before,
 .leading_c38106:hover::before {
-    content: "D O R I N --- D O L O F A N U    +   M A D A B U L I N A   =   L O V E" !important;
+    content: "W e n B y s" !important;
+}
+/* ca sa ascunzi boxul "Help" de sus la windows tab */
+.clickable__81391[aria-label="Help"] {
+    display: none !important;
 }

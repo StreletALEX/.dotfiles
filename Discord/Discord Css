@@ -1,9 +1,6 @@
-
-/* CHILLAX theme entry point */
+/* Main theme */
 @import url("https://warrayquipsome.github.io/Chillax/chillax.css");
 
-/* removable addons */
-/* @import url("https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Microsoft.css"); */
 @import url("https://mwittrien.github.io/BetterDiscordAddons/Themes/_res/SettingsIcons.css");
 @import url("https://chillax-org.github.io/Discolored/main.css");
 @import url("https://warrayquipsome.github.io/Chillax/Addons/IconPackEdited.css");
@@ -13,59 +10,33 @@
 @import url("https://warrayquipsome.github.io/Chillax/Addons/FriendGrid.css");
 @import url("https://warrayquipsome.github.io/Chillax/Addons/ColoredLinks.css");
 
-/* Hide nitro section of friends list */
-.link__972a0[href="/store"] {
-    display: none;
-}
-/* Hide Nitro gift button */
-div[aria-label="Send a gift"] {
-    display: none;
-}
-/* Hide the "Play Again" section in DMs */
-.container_e5a9ed {
-    display: none !important;
-}
-/* Remove mobile icon */
-foreignObject[mask="url(#svg-mask-avatar-status-mobile-32)"]::after {
-    visibility: hidden !important;
-}
 
-/* Chillax Roots */
+/* ==========================================================================
+    VARIABLES
+   ========================================================================== */
 :root {
-    /*background image*/ /*(replace the link to use)*/
+    /* Background */
+    --wallpaper: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
     --background-image: var(--wallpaper);
     --bg-opacity: 100%;
-    /*bg dev suggestions*/
-    --wallpaper: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
-    /*modern background selection*/
     --modern-dark-bg: url("https://warrayquipsome.github.io/Chillax/Wallpapers/modern-dark-bg.png");
     --modern-light-bg: url("https://warrayquipsome.github.io/Chillax/Wallpapers/modern-light-bg.png");
-}
 
-
-/*window*/ /*dark mode*/
-:root.theme-dark {
-    --window-margin: 0px; /*must be above 20px*/
-    --window-colour: #0009;
-    --window-blur: 5px;
-    --window-border-radius: 10px;
-    --sidebar-colour: rgb(36, 36, 36);
-}
-
-
-/*roots*/ /*both dark and light*/
-:root {
+    /* Text and fonts */
     --user-name: "King";
     --edited-message: " EDITED ✎ ";
     --font-name: Poppins;
     --font-size: 13px;
-    --group-chat-font: "Monoton"; /* change this to change the group chat's default font */
+    --group-chat-font: "Monoton";
 
+    /* Accent color (both must be changed together) */
+    --accentcolor: 251, 84, 84;   /* rgb */
+    --accentcolorV2: #000000;     /* hex - also used for the live bar */
 
-    /*glow radial status*/ /*must end in px*/
+    /* Radial status (values must end in px) */
     --rs-small-spacing: 0px;
-    --rs-large-spacing: 0px;
     --rs-medium-spacing: 0px;
+    --rs-large-spacing: 0px;
     --rs-small-width: 2.5px;
     --rs-medium-width: 3.5px;
     --rs-large-width: 4.5px;
@@ -76,51 +47,51 @@ foreignObject[mask="url(#svg-mask-avatar-status-mobile-32)"]::after {
     --rs-offline-color: #636b75;
     --rs-streaming-color: #643da7;
     --rs-invisible-color: #636b75;
-    --rs-phone-visible: block; /* change it to `none` to disable mobile icon */
+    --rs-phone-visible: block;    /* "none" hides the mobile icon */
     --rs-phone-color: var(--rs-online-color);
 
-    /* For accent color to take full effect must need to change both */
-    /* chillax colours rgb */
-    --accentcolor: 251, 84, 84;
-    /* chillax colours hex */
-    --accentcolorV2: #000000;/* Culoarea la bara de la live */
-
-
-    /* settings modal root */
+    /* Settings modal */
     --themelightsettingsmodalbackground: rgb(223, 223, 223);
     --themedarksettingsmodalbackground: rgb(51, 49, 53);
     --settingsmodalwidth: 960px;
     --settingsmodalheight: 80vh;
 
-    /* avatar only member list */
-    --memberlist-border-radius: 10px; /* can be in `px`, `rem`, `em` */
+    /* Member list (avatar only) */
+    --memberlist-border-radius: 10px;
 
-    /* placeholder texts/values */
-    /* input fields */
+    /* Placeholder texts */
     --chillax-input-field: "Life is so much easier when you just take a moment to chill";
-    /* input fields  when the channel is locked*/
     --chillax-input-field-locked: "Unfortunately, you can't chill in this channel";
-    /* typing indicator: when a single person is typing */
     --chillax-input-typing-indicator-one-person: "is smashing some buttons";
-    /* typing indicator: when more than one person is typing */
     --chillax-input-typing-indicator-many-person: "are smashing some buttons";
 
-    /* scroller (by default transparent) */
-    --chillax-scroller-color: transparent; /* change `transparent` to some other hex color to make it visible */
+    /* Scrollbar (transparent by default) */
+    --chillax-scroller-color: transparent;
 
-    /* Spotify Player Control Squid GIF Adjustments */
-
-    /* Change the ulr in the `--chillax-spotify-control-squid-gif-url` css var to your liking */
+    /* Spotify squid GIF */
     --chillax-spotify-control-squid-gif-url: url("https://raw.githubusercontent.com/Chillax-ORG/Images/refs/heads/main/Glow_Squid_BE1.gif");
-    /* adjust the height and width accordingly */
     --chillax-spotify-control-squid-width: 25px;
     --chillax-spotify-control-squid-height: 25px;
+    --chillax-spotify-control-squid-glow: rgba(0, 255, 255, 0.4);  /* "none" disables it */
 
-    /* adjust glow color accordingly */
-    --chillax-spotify-control-squid-glow: rgba(0, 255, 255, 0.4); /* set to `none` to disable it */
+    /* Friends grid: card size */
+    --FG-cards-height: 130px;
+    --FG-cards-banner-height: 0px;
+    --FG-cards-margin-bottom: 0px;
+    --FG-cards-banner-background: rgb(36, 36, 36);
+    --user-accent-color: var(--FG-cards-banner-background);
 }
 
-/*discord transparency*//*roots*/ /*theme dark*/
+/* --- Window (dark mode) --- */
+:root.theme-dark {
+    --window-margin: 0px;         /* 0 = full screen */
+    --window-colour: #0009;
+    --window-blur: 5px;
+    --window-border-radius: 10px;
+    --sidebar-colour: rgb(36, 36, 36);
+}
+
+/* --- Transparency (dark mode) --- */
 .theme-dark {
     --background-message-hover: rgba(255, 255, 255, 0.055);
     --header-primary: #fff;
@@ -139,39 +110,127 @@ foreignObject[mask="url(#svg-mask-avatar-status-mobile-32)"]::after {
     --activity-card-background: transparent;
     --deprecated-panel-background: transparent;
 }
+/* ==========================================================================
+   HIDDEN ELEMENTS
+   ========================================================================== */
 
-/*discord transparency*//*roots*/ /*theme light*/
-.theme-light {
-    --background-message-hover: rgba(255, 255, 255, 0.055);
-    --header-primary: rgb(0, 0, 0);
-    --header-secondary: #3f3f3f;
-    --text-normal: #303030;
-    --text-muted: #333333;
-    --channels-default: #585b5e;
-    --interactive-normal: #3a3a3a;
-    --interactive-hover: #333333;
-    --interactive-active: rgb(0, 0, 0);
-    --interactive-muted: #4f545c;
-    --background-primary: transparent;
-    --background-secondary: transparent;
-    --background-tertiary: transparent;
-    --background-accent: rgb(27, 27, 27);
-    --activity-card-background: transparent;
-    --deprecated-panel-background: transparent;
+/* Nitro tab in the friends list */
+.link__972a0[href="/store"] {
+    display: none;
 }
-/* Ca sa ascunzi boxul de sus */
-/* .leading_c38106::before,             
-.leading_c38106:hover::before {
-    content: none !important;
+
+/* Nitro gift button */
+div[aria-label="Send a gift"] {
+    display: none;
+}
+
+/* "Play Again" section in DMs */
+.container_e5a9ed {
     display: none !important;
-} */
-
-/* ca sa modifici boxu de sus la windows tab */
- .leading_c38106::before,
-.leading_c38106:hover::before {
-    content: "W e n B y s" !important;
 }
-/* ca sa ascunzi boxul "Help" de sus la windows tab */
+
+/* Mobile status icon */
+foreignObject[mask="url(#svg-mask-avatar-status-mobile-32)"]::after {
+    visibility: hidden !important;
+}
+
+/* "Help" button in the title bar */
 .clickable__81391[aria-label="Help"] {
     display: none !important;
+}
+/* ==========================================================================
+    TITLE BAR
+   ========================================================================== */
+
+/* Wordmark box (top-left).
+   To hide it completely, use this instead of the rule below:
+       .leading_c38106::before,
+       .leading_c38106:hover::before {
+           content: none !important;
+           display: none !important;
+       }
+*/
+.leading_c38106::before,
+.leading_c38106:hover::before {
+    content: "W e n B y s" !important;
+    /* content: "DORIN DOLOFANU" !important; */
+}
+
+/* ==========================================================================
+  FRIENDS GRID (online / all friends)
+   ========================================================================== */
+
+/* Spacing between cards */
+.peopleColumn__133bf .peopleList__5ec2f > div {
+    grid-column-gap: 8px;
+    row-gap: 8px;
+}
+
+/* Card: size, outline, rounded corners */
+.peopleColumn__133bf .peopleListItem_cc6179 {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+}
+
+.peopleColumn__133bf .peopleListItem_cc6179:hover {
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Card content area */
+.peopleColumn__133bf .userInfo__0a06e {
+    position: relative;
+    height: auto;
+    min-height: calc(var(--FG-cards-height) + var(--FG-cards-banner-height));
+}
+
+/* Banner color */
+.peopleColumn__133bf .userInfo__0a06e::before {
+    top: 0;
+    left: 0;
+    background-color: var(--FG-cards-banner-background) !important;
+}
+
+/* Avatar */
+.peopleColumn__133bf .avatar__0a06e {
+    position: absolute;
+    top: 30px;
+    left: var(--FG-avatar-margin-left);
+    margin: 0;
+    transform: scale(1.4);
+    transform-origin: top left;
+    z-index: 2;
+}
+
+.peopleColumn__133bf .avatar__0a06e::before {
+    position: absolute;
+}
+
+/* Name and status */
+.peopleColumn__133bf .text__0a06e {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: calc(100% - 40px) !important;
+    margin-left: var(--FG-text-margin-left);
+    font-size: 16px;
+    line-height: 18px;
+    z-index: 2;
+}
+
+.peopleColumn__133bf .discriminator__0a06e {
+    font-size: 16px;
+    line-height: 18px;
+}
+
+/* Mutual servers (top-right of the card, below the action buttons) */
+.peopleColumn__133bf [class*="mutualGuilds"],   
+.peopleColumn__133bf [class*="guildsContainer"] {
+    position: absolute !important;
+    top: 46px !important;
+    right: 10px;
+    bottom: auto !important;
+    margin: 0 !important;
+    z-index: 3;
 }

@@ -1,0 +1,109 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "focusFollowMouse": true,
+    "keybindings":
+    [
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
+    {
+        "defaults":
+        {
+            "backgroundImage": "C:\\Users\\HM\\TerminalWP\\wallpaper.jpg",
+            "backgroundImageAlignment": "center",
+            "backgroundImageOpacity": 0.1,
+            "backgroundImageStretchMode": "uniformToFill",
+            "colorScheme": "TerminalWP",
+            "elevate": true,
+            "experimental.retroTerminalEffect": false,
+            "font":
+            {
+                "face": "CaskaydiaCove Nerd Font",
+                "size": 11
+            },
+            "opacity": 78,
+            "scrollbarState": "hidden",
+            "tabColor": "#000000",
+            "useAcrylic": true
+        },
+        "list":
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell",
+                "tabColor": "#000000"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            }
+        ]
+    },
+    "schemes":
+    [
+        {
+            "background": "#0F1117",
+            "black": "#1A1A2E",
+            "blue": "#82AAFF",
+            "brightBlack": "#4A4A6A",
+            "brightBlue": "#9CC4FF",
+            "brightCyan": "#A3F7FF",
+            "brightGreen": "#DDFFA7",
+            "brightPurple": "#E1ACFF",
+            "brightRed": "#FF8B94",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFE585",
+            "cursorColor": "#FFCB6B",
+            "cyan": "#89DDFF",
+            "foreground": "#E6E1CF",
+            "green": "#C3E88D",
+            "name": "TerminalWP",
+            "purple": "#C792EA",
+            "red": "#FF5370",
+            "selectionBackground": "#2D3149",
+            "white": "#D0D0D0",
+            "yellow": "#FFCB6B"
+        }
+    ],
+    "searchWebDefaultQueryUrl": "https://www.google.com/",
+    "themes": [],
+    "useAcrylicInTabRow": false
+}

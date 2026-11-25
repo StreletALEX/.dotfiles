@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "foreground": "#ffffff",
+          "background": "#1f1f2e",
+          "template": " {{ if .WSL }}WSL {{ end }}{{ .Icon }} "
+        },
+        {
+          "type": "session",
+          "style": "diamond",
+          "foreground": "#e0def4",
+          "background": "#2a2a3c",
+          "template": " {{ .UserName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#e0def4",
+          "background": "#31748f",
+          "template": " \ue5ff {{ path .Path .Location }} ",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#191724",
+          "background": "#ebbcba",
+          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
+          "properties": {
+            "fetch_status": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "time",
+          "style": "diamond",
+          "foreground": "#f6c177",
+          "background": "transparent",
+          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "properties": {
+            "time_format": "2006-01-02 15:04:05"
+          }
+        },
+        {
+          "type": "sysinfo",
+          "style": "diamond",
+          "foreground": "#9ccfd8",
+          "background": "transparent",
+          "template": " \uf2db {{ round .PhysicalPercentUsed .Precision }}% RAM ",
+          "properties": {
+            "precision": 1
+          }
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "foreground": "#c4a7e7",
+          "background": "transparent",
+          "template": " \uf0ac {{ .Env.TERMINAL_LOCAL_IP }} "
+        },
+        {
+          "type": "ipify",
+          "style": "diamond",
+          "foreground": "#eb6f92",
+          "background": "transparent",
+          "template": " \uf0e8 {{ .IP }} ",
+          "properties": {
+            "http_timeout": 1000,
+            "cache_duration": "1h"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#908caa",
+          "template": "\u276f "
+        }
+      ]
+    }
+  ]
+}

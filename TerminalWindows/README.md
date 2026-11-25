@@ -25,7 +25,8 @@ The wallpaper is stored in `%USERPROFILE%\TerminalWP\` (folder named `TerminalWP
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 .\Install-TerminalWP.ps1
-oh-my-posh font install CascadiaCode
 ```
 
-Then set the Windows Terminal font to `CaskaydiaCove Nerd Font` and restart the terminal.
+The installer automatically installs Windows Terminal, PowerShell 7, oh-my-posh,
+the Nerd Font (CascadiaCode), Terminal-Icons and PSReadLine modules, the wallpaper,
+theme, profile and backs up your settings. Then just restart Windows Terminal.

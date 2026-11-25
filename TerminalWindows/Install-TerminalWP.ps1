@@ -1,5 +1,7 @@
 # =====================================================================
 # TerminalWP - Installer (run: .\Install-TerminalWP.ps1)
+# Installs ALL prerequisites: Windows Terminal, PowerShell 7, oh-my-posh,
+# Nerd Font, modules, wallpaper, theme, profile, settings.
 # =====================================================================
 param(
     [string]$WallpaperFolder = "$env:USERPROFILE\TerminalWP",
@@ -7,6 +9,26 @@ param(
 )
 $ErrorActionPreference = 'Continue'
 Write-Host "`n=== TerminalWP installer ===" -ForegroundColor Cyan
+
+# ---------------------------------------------------------------------
+# 0. Prerequisites
+# ---------------------------------------------------------------------
+Write-Host "[*] Checking prerequisites..." -ForegroundColor Cyan
+
+if (-not (Get-Command wt -ErrorAction SilentlyContinue)) {
+    Write-Host "[*] Installing Windows Terminal..." -ForegroundColor Cyan
+    winget install --id Microsoft.WindowsTerminal -e --source winget --accept-package-agreements --accept-source-agreements
+} else { Write-Host "[=] Windows Terminal present." -ForegroundColor Yellow }
+
+if (-not (Get-Command pwsh -ErrorAction SilentlyContinue)) {
+    Write-Host "[*] Installing PowerShell 7..." -ForegroundColor Cyan
+    winget install --id Microsoft.PowerShell -e --source winget --accept-package-agreements --accept-source-agreements
+} else { Write-Host "[=] PowerShell 7 present." -ForegroundColor Yellow }
+
+if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
+    Write-Host "[*] Installing oh-my-posh..." -ForegroundColor Cyan
+    winget install --id JanDeDobbeleer.OhMyPosh -e --source winget --accept-package-agreements --accept-source-agreements
+} else { Write-Host "[=] oh-my-posh present." -ForegroundColor Yellow }
 
 # 1. Wallpaper folder
 if (-not (Test-Path $WallpaperFolder)) {
@@ -39,10 +61,18 @@ try {
     if (-not (Get-Module -ListAvailable Terminal-Icons)) {
         Install-Module Terminal-Icons -Scope CurrentUser -Force -AllowClobber
     }
-    Write-Host "[+] Modules ready." -ForegroundColor Green
+    if (-not (Get-Module -ListAvailable PSReadLine)) {
+        Install-Module PSReadLine -Scope CurrentUser -Force -AllowClobber
+    }
+    Write-Host "[+] Modules ready (Terminal-Icons, PSReadLine)." -ForegroundColor Green
 } catch {
     Write-Host "[!] Module install issue: $_" -ForegroundColor Red
 }
+
+# 3b. Nerd Font
+Write-Host "[*] Installing Nerd Font (CascadiaCode)..." -ForegroundColor Cyan
+try { oh-my-posh font install CascadiaCode; Write-Host "[+] Font installed." -ForegroundColor Green }
+catch { Write-Host "[!] Font install failed; run manually: oh-my-posh font install CascadiaCode" -ForegroundColor Red }
 
 # 4. oh-my-posh theme
 $themeDir = "$env:USERPROFILE\.config\oh-my-posh"
@@ -52,7 +82,7 @@ $themeJson = '{"$schema":"https://raw.githubusercontent.com/JanDeDobbeleer/oh-my
 Set-Content -Path $themeFile -Value $themeJson -Encoding UTF8
 Write-Host "[+] oh-my-posh theme written: $themeFile" -ForegroundColor Green
 
-# 5. Profiles
+# 5. PowerShell profiles
 $profileContent = @'
 # TerminalWP profile
 $TerminalWP = "$env:USERPROFILE\TerminalWP"
@@ -132,6 +162,5 @@ if (-not $SkipTerminalSettings) {
 
 Write-Host "`n=== Done ===" -ForegroundColor Cyan
 Write-Host "Next steps:" -ForegroundColor White
-Write-Host "  1. Install Nerd Font:  oh-my-posh font install CascadiaCode" -ForegroundColor White
-Write-Host "  2. Set Windows Terminal font to 'CaskaydiaCove Nerd Font'" -ForegroundColor White
-Write-Host "  3. Restart Windows Terminal" -ForegroundColor White
+Write-Host "  1. Restart Windows Terminal" -ForegroundColor White
+Write-Host "  2. If icons look like boxes, set font to 'CaskaydiaCove Nerd Font' in Terminal settings" -ForegroundColor White
